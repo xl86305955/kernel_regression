@@ -1,0 +1,687 @@
+python run_experiment.py abalone nn CW
+WARNING:tensorflow:From /home/disk4T/fred/Aisecurity/robust_nn_icml/venv/lib/python2.7/site-packages/tensorflow_core/python/compat/v2_compat.py:65: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2021-04-11 16:22:11.917669: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2021-04-11 16:22:11.939399: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 3199980000 Hz
+2021-04-11 16:22:11.940059: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x564439b05470 executing computations on platform Host. Devices:
+2021-04-11 16:22:11.940074: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
+2021-04-11 16:22:11.941412: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2021-04-11 16:22:12.070390: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.072110: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.072789: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x564439758a00 executing computations on platform CUDA. Devices:
+2021-04-11 16:22:12.072800: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2021-04-11 16:22:12.072805: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (1): GeForce GTX 1080 Ti, Compute Capability 6.1
+2021-04-11 16:22:12.073013: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.073566: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:12.073598: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.074142: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:12.074215: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.074261: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.074304: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.074346: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.074389: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.074439: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.076711: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:12.076724: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:12.076751: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:12.076757: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:12.076761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:12.076765: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+WARNING:tensorflow:From ./cleverhans/cleverhans/picklable_model.py:189: calling reduce_sum_v1 (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /home/disk4T/fred/Aisecurity/robust_nn_icml/venv/lib/python2.7/site-packages/tensorflow_core/python/ops/resource_variable_ops.py:1630: calling __init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+./cleverhans/cleverhans/utils_tf.py:552: UserWarning: This function is deprecated and will be removed on or after 2019-04-05. Switch to cleverhans.train.train.
+  warnings.warn("This function is deprecated and will be removed on or after"
+./cleverhans/cleverhans/utils_tf.py:40: UserWarning: This function is deprecated and will be removed on or after 2019-04-05. Switch to cleverhans.train.train.
+  warnings.warn("This function is deprecated and will be removed on or after"
+WARNING:tensorflow:From ./cleverhans/cleverhans/compat.py:81: calling softmax_cross_entropy_with_logits_v2_helper (from tensorflow.python.ops.nn_ops) with dim is deprecated and will be removed in a future version.
+Instructions for updating:
+dim is deprecated, use axis instead
+./cleverhans/cleverhans/compat.py:24: UserWarning: <function reduce_mean_v1 at 0x7fb542ba1550> is deprecated. Switch to calling the equivalent function in tensorflow.  This function was originally needed as a compatibility layer for old versions of tensorflow,  but support for those versions has now been dropped.
+  warnings.warn(str(f) + " is deprecated. Switch to calling the equivalent function in tensorflow. "
+[INFO 2021-04-11 16:22:12,243 cleverhans] Epoch 0 took 0.0310139656067 seconds
+[INFO 2021-04-11 16:22:12,247 cleverhans] Epoch 1 took 0.00399398803711 seconds
+[INFO 2021-04-11 16:22:12,250 cleverhans] Epoch 2 took 0.00360703468323 seconds
+[INFO 2021-04-11 16:22:12,254 cleverhans] Epoch 3 took 0.00342106819153 seconds
+[INFO 2021-04-11 16:22:12,258 cleverhans] Epoch 4 took 0.00349020957947 seconds
+[INFO 2021-04-11 16:22:12,261 cleverhans] Epoch 5 took 0.0034019947052 seconds
+[INFO 2021-04-11 16:22:12,265 cleverhans] Epoch 6 took 0.00357294082642 seconds
+[INFO 2021-04-11 16:22:12,268 cleverhans] Epoch 7 took 0.0035548210144 seconds
+[INFO 2021-04-11 16:22:12,272 cleverhans] Epoch 8 took 0.0033438205719 seconds
+[INFO 2021-04-11 16:22:12,275 cleverhans] Epoch 9 took 0.00353384017944 seconds
+[INFO 2021-04-11 16:22:12,279 cleverhans] Epoch 10 took 0.00347900390625 seconds
+[INFO 2021-04-11 16:22:12,282 cleverhans] Epoch 11 took 0.00334501266479 seconds
+[INFO 2021-04-11 16:22:12,286 cleverhans] Epoch 12 took 0.00323605537415 seconds
+[INFO 2021-04-11 16:22:12,289 cleverhans] Epoch 13 took 0.00347518920898 seconds
+[INFO 2021-04-11 16:22:12,293 cleverhans] Epoch 14 took 0.00333094596863 seconds
+[INFO 2021-04-11 16:22:12,296 cleverhans] Epoch 15 took 0.00355291366577 seconds
+[INFO 2021-04-11 16:22:12,300 cleverhans] Epoch 16 took 0.00323700904846 seconds
+[INFO 2021-04-11 16:22:12,303 cleverhans] Epoch 17 took 0.00319790840149 seconds
+[INFO 2021-04-11 16:22:12,306 cleverhans] Epoch 18 took 0.00310015678406 seconds
+[INFO 2021-04-11 16:22:12,309 cleverhans] Epoch 19 took 0.00318193435669 seconds
+[INFO 2021-04-11 16:22:12,310 cleverhans] Completed model training.
+./cleverhans/cleverhans/attacks_tf.py:27: UserWarning: attacks_tf is deprecated and will be removed on 2019-07-18 or after. Code should import functions from their new locations directly.
+  warnings.warn("attacks_tf is deprecated and will be removed on 2019-07-18"
+./cleverhans/cleverhans/compat.py:24: UserWarning: <function reduce_max_v1 at 0x7fb542b27450> is deprecated. Switch to calling the equivalent function in tensorflow.  This function was originally needed as a compatibility layer for old versions of tensorflow,  but support for those versions has now been dropped.
+  warnings.warn(str(f) + " is deprecated. Switch to calling the equivalent function in tensorflow. "
+WARNING:tensorflow:From ./cleverhans/cleverhans/attacks/attack.py:282: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+./cleverhans/cleverhans/compat.py:24: UserWarning: <function reduce_sum_v1 at 0x7fb542ba13d0> is deprecated. Switch to calling the equivalent function in tensorflow.  This function was originally needed as a compatibility layer for old versions of tensorflow,  but support for those versions has now been dropped.
+  warnings.warn(str(f) + " is deprecated. Switch to calling the equivalent function in tensorflow. "
+2021-04-11 16:22:12.401176: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.401781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:12.401835: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.402388: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:12.402469: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.402522: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.402568: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.402613: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.402656: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.402705: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.402717: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:12.402722: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:12.402752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:12.402761: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:12.402766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:12.402769: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:12,565 cleverhans] Epoch 0 took 0.0331120491028 seconds
+[INFO 2021-04-11 16:22:12,572 cleverhans] Epoch 1 took 0.00696420669556 seconds
+[INFO 2021-04-11 16:22:12,579 cleverhans] Epoch 2 took 0.00731706619263 seconds
+[INFO 2021-04-11 16:22:12,587 cleverhans] Epoch 3 took 0.00738310813904 seconds
+[INFO 2021-04-11 16:22:12,594 cleverhans] Epoch 4 took 0.00710606575012 seconds
+[INFO 2021-04-11 16:22:12,601 cleverhans] Epoch 5 took 0.00667595863342 seconds
+[INFO 2021-04-11 16:22:12,607 cleverhans] Epoch 6 took 0.00651383399963 seconds
+[INFO 2021-04-11 16:22:12,614 cleverhans] Epoch 7 took 0.00656700134277 seconds
+[INFO 2021-04-11 16:22:12,620 cleverhans] Epoch 8 took 0.00644207000732 seconds
+[INFO 2021-04-11 16:22:12,627 cleverhans] Epoch 9 took 0.00636506080627 seconds
+[INFO 2021-04-11 16:22:12,634 cleverhans] Epoch 10 took 0.00681495666504 seconds
+[INFO 2021-04-11 16:22:12,640 cleverhans] Epoch 11 took 0.00619602203369 seconds
+[INFO 2021-04-11 16:22:12,646 cleverhans] Epoch 12 took 0.00615215301514 seconds
+[INFO 2021-04-11 16:22:12,653 cleverhans] Epoch 13 took 0.00632500648499 seconds
+[INFO 2021-04-11 16:22:12,660 cleverhans] Epoch 14 took 0.00679397583008 seconds
+[INFO 2021-04-11 16:22:12,666 cleverhans] Epoch 15 took 0.00631809234619 seconds
+[INFO 2021-04-11 16:22:12,673 cleverhans] Epoch 16 took 0.0063259601593 seconds
+[INFO 2021-04-11 16:22:12,679 cleverhans] Epoch 17 took 0.00621914863586 seconds
+[INFO 2021-04-11 16:22:12,685 cleverhans] Epoch 18 took 0.00611591339111 seconds
+[INFO 2021-04-11 16:22:12,691 cleverhans] Epoch 19 took 0.00611591339111 seconds
+[INFO 2021-04-11 16:22:12,691 cleverhans] Completed model training.
+2021-04-11 16:22:12.787416: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.788012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:12.788058: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:12.788603: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:12.788683: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.788737: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.788781: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.788823: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.788864: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.788906: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:12.788917: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:12.788922: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:12.788950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:12.788955: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:12.788959: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:12.788963: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:12,954 cleverhans] Epoch 0 took 0.038544178009 seconds
+[INFO 2021-04-11 16:22:12,968 cleverhans] Epoch 1 took 0.0142328739166 seconds
+[INFO 2021-04-11 16:22:12,982 cleverhans] Epoch 2 took 0.0132610797882 seconds
+[INFO 2021-04-11 16:22:12,995 cleverhans] Epoch 3 took 0.0132060050964 seconds
+[INFO 2021-04-11 16:22:13,008 cleverhans] Epoch 4 took 0.0134439468384 seconds
+[INFO 2021-04-11 16:22:13,022 cleverhans] Epoch 5 took 0.0134918689728 seconds
+[INFO 2021-04-11 16:22:13,035 cleverhans] Epoch 6 took 0.0128540992737 seconds
+[INFO 2021-04-11 16:22:13,047 cleverhans] Epoch 7 took 0.01220703125 seconds
+[INFO 2021-04-11 16:22:13,060 cleverhans] Epoch 8 took 0.0129189491272 seconds
+[INFO 2021-04-11 16:22:13,073 cleverhans] Epoch 9 took 0.0128490924835 seconds
+[INFO 2021-04-11 16:22:13,086 cleverhans] Epoch 10 took 0.0127091407776 seconds
+[INFO 2021-04-11 16:22:13,100 cleverhans] Epoch 11 took 0.0131809711456 seconds
+[INFO 2021-04-11 16:22:13,113 cleverhans] Epoch 12 took 0.0131840705872 seconds
+[INFO 2021-04-11 16:22:13,126 cleverhans] Epoch 13 took 0.0132188796997 seconds
+[INFO 2021-04-11 16:22:13,139 cleverhans] Epoch 14 took 0.0122270584106 seconds
+[INFO 2021-04-11 16:22:13,151 cleverhans] Epoch 15 took 0.0126810073853 seconds
+[INFO 2021-04-11 16:22:13,164 cleverhans] Epoch 16 took 0.0125060081482 seconds
+[INFO 2021-04-11 16:22:13,176 cleverhans] Epoch 17 took 0.0118081569672 seconds
+[INFO 2021-04-11 16:22:13,188 cleverhans] Epoch 18 took 0.012405872345 seconds
+[INFO 2021-04-11 16:22:13,201 cleverhans] Epoch 19 took 0.0123479366302 seconds
+[INFO 2021-04-11 16:22:13,201 cleverhans] Completed model training.
+2021-04-11 16:22:13.210139: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:13.210742: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:13.210794: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:13.211352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:13.211436: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.211485: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.211528: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.211571: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.211612: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.211654: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.211665: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:13.211670: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:13.211699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:13.211705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:13.211709: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:13.211712: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:13,423 cleverhans] Epoch 0 took 0.0391011238098 seconds
+[INFO 2021-04-11 16:22:13,437 cleverhans] Epoch 1 took 0.0136229991913 seconds
+[INFO 2021-04-11 16:22:13,450 cleverhans] Epoch 2 took 0.0130469799042 seconds
+[INFO 2021-04-11 16:22:13,463 cleverhans] Epoch 3 took 0.0131487846375 seconds
+[INFO 2021-04-11 16:22:13,476 cleverhans] Epoch 4 took 0.0131089687347 seconds
+[INFO 2021-04-11 16:22:13,490 cleverhans] Epoch 5 took 0.0131630897522 seconds
+[INFO 2021-04-11 16:22:13,504 cleverhans] Epoch 6 took 0.0137579441071 seconds
+[INFO 2021-04-11 16:22:13,517 cleverhans] Epoch 7 took 0.01313996315 seconds
+[INFO 2021-04-11 16:22:13,530 cleverhans] Epoch 8 took 0.0125739574432 seconds
+[INFO 2021-04-11 16:22:13,543 cleverhans] Epoch 9 took 0.0132548809052 seconds
+[INFO 2021-04-11 16:22:13,556 cleverhans] Epoch 10 took 0.0134210586548 seconds
+[INFO 2021-04-11 16:22:13,569 cleverhans] Epoch 11 took 0.0126099586487 seconds
+[INFO 2021-04-11 16:22:13,582 cleverhans] Epoch 12 took 0.0124599933624 seconds
+[INFO 2021-04-11 16:22:13,594 cleverhans] Epoch 13 took 0.0124478340149 seconds
+[INFO 2021-04-11 16:22:13,606 cleverhans] Epoch 14 took 0.0119760036469 seconds
+[INFO 2021-04-11 16:22:13,618 cleverhans] Epoch 15 took 0.0119569301605 seconds
+[INFO 2021-04-11 16:22:13,631 cleverhans] Epoch 16 took 0.0122349262238 seconds
+[INFO 2021-04-11 16:22:13,643 cleverhans] Epoch 17 took 0.0123679637909 seconds
+[INFO 2021-04-11 16:22:13,656 cleverhans] Epoch 18 took 0.0124418735504 seconds
+[INFO 2021-04-11 16:22:13,668 cleverhans] Epoch 19 took 0.0122201442719 seconds
+[INFO 2021-04-11 16:22:13,668 cleverhans] Completed model training.
+2021-04-11 16:22:13.954305: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:13.954903: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:13.954952: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:13.955504: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:13.955587: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.955636: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.955680: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.955725: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.955767: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.955810: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:13.955822: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:13.955827: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:13.955862: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:13.955868: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:13.955872: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:13.955875: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:14,108 cleverhans] Epoch 0 took 0.0281548500061 seconds
+[INFO 2021-04-11 16:22:14,111 cleverhans] Epoch 1 took 0.00352501869202 seconds
+[INFO 2021-04-11 16:22:14,115 cleverhans] Epoch 2 took 0.00355792045593 seconds
+[INFO 2021-04-11 16:22:14,118 cleverhans] Epoch 3 took 0.00345206260681 seconds
+[INFO 2021-04-11 16:22:14,122 cleverhans] Epoch 4 took 0.00359106063843 seconds
+[INFO 2021-04-11 16:22:14,126 cleverhans] Epoch 5 took 0.00342607498169 seconds
+[INFO 2021-04-11 16:22:14,129 cleverhans] Epoch 6 took 0.00345087051392 seconds
+[INFO 2021-04-11 16:22:14,133 cleverhans] Epoch 7 took 0.00339102745056 seconds
+[INFO 2021-04-11 16:22:14,136 cleverhans] Epoch 8 took 0.00357484817505 seconds
+[INFO 2021-04-11 16:22:14,140 cleverhans] Epoch 9 took 0.00347495079041 seconds
+[INFO 2021-04-11 16:22:14,143 cleverhans] Epoch 10 took 0.00321102142334 seconds
+[INFO 2021-04-11 16:22:14,146 cleverhans] Epoch 11 took 0.00311207771301 seconds
+[INFO 2021-04-11 16:22:14,149 cleverhans] Epoch 12 took 0.0031430721283 seconds
+[INFO 2021-04-11 16:22:14,153 cleverhans] Epoch 13 took 0.0032958984375 seconds
+[INFO 2021-04-11 16:22:14,156 cleverhans] Epoch 14 took 0.00328588485718 seconds
+[INFO 2021-04-11 16:22:14,159 cleverhans] Epoch 15 took 0.00323605537415 seconds
+[INFO 2021-04-11 16:22:14,163 cleverhans] Epoch 16 took 0.0032331943512 seconds
+[INFO 2021-04-11 16:22:14,166 cleverhans] Epoch 17 took 0.00353097915649 seconds
+[INFO 2021-04-11 16:22:14,170 cleverhans] Epoch 18 took 0.0033130645752 seconds
+[INFO 2021-04-11 16:22:14,173 cleverhans] Epoch 19 took 0.00303792953491 seconds
+[INFO 2021-04-11 16:22:14,173 cleverhans] Completed model training.
+2021-04-11 16:22:14.262790: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:14.263408: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:14.263458: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:14.264013: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:14.264101: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.264149: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.264191: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.264232: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.264272: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.264320: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.264331: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:14.264336: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:14.264365: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:14.264370: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:14.264374: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:14.264378: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:14,424 cleverhans] Epoch 0 took 0.032534122467 seconds
+[INFO 2021-04-11 16:22:14,431 cleverhans] Epoch 1 took 0.00713992118835 seconds
+[INFO 2021-04-11 16:22:14,438 cleverhans] Epoch 2 took 0.00742411613464 seconds
+[INFO 2021-04-11 16:22:14,446 cleverhans] Epoch 3 took 0.00723719596863 seconds
+[INFO 2021-04-11 16:22:14,453 cleverhans] Epoch 4 took 0.00687098503113 seconds
+[INFO 2021-04-11 16:22:14,459 cleverhans] Epoch 5 took 0.00659012794495 seconds
+[INFO 2021-04-11 16:22:14,466 cleverhans] Epoch 6 took 0.00674700737 seconds
+[INFO 2021-04-11 16:22:14,472 cleverhans] Epoch 7 took 0.00604009628296 seconds
+[INFO 2021-04-11 16:22:14,479 cleverhans] Epoch 8 took 0.00636887550354 seconds
+[INFO 2021-04-11 16:22:14,485 cleverhans] Epoch 9 took 0.00662398338318 seconds
+[INFO 2021-04-11 16:22:14,492 cleverhans] Epoch 10 took 0.00626015663147 seconds
+[INFO 2021-04-11 16:22:14,498 cleverhans] Epoch 11 took 0.00641298294067 seconds
+[INFO 2021-04-11 16:22:14,505 cleverhans] Epoch 12 took 0.00624299049377 seconds
+[INFO 2021-04-11 16:22:14,511 cleverhans] Epoch 13 took 0.00618410110474 seconds
+[INFO 2021-04-11 16:22:14,517 cleverhans] Epoch 14 took 0.00645804405212 seconds
+[INFO 2021-04-11 16:22:14,524 cleverhans] Epoch 15 took 0.00660920143127 seconds
+[INFO 2021-04-11 16:22:14,532 cleverhans] Epoch 16 took 0.00726890563965 seconds
+[INFO 2021-04-11 16:22:14,538 cleverhans] Epoch 17 took 0.00645089149475 seconds
+[INFO 2021-04-11 16:22:14,545 cleverhans] Epoch 18 took 0.00683403015137 seconds
+[INFO 2021-04-11 16:22:14,552 cleverhans] Epoch 19 took 0.00655508041382 seconds
+[INFO 2021-04-11 16:22:14,552 cleverhans] Completed model training.
+2021-04-11 16:22:14.657166: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:14.657763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:14.657809: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:14.658354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:14.658438: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.658493: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.658538: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.658583: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.658626: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.658668: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:14.658680: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:14.658686: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:14.658714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:14.658720: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:14.658724: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:14.658727: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:14,825 cleverhans] Epoch 0 took 0.0393850803375 seconds
+[INFO 2021-04-11 16:22:14,839 cleverhans] Epoch 1 took 0.0143690109253 seconds
+[INFO 2021-04-11 16:22:14,854 cleverhans] Epoch 2 took 0.0147061347961 seconds
+[INFO 2021-04-11 16:22:14,867 cleverhans] Epoch 3 took 0.0130820274353 seconds
+[INFO 2021-04-11 16:22:14,881 cleverhans] Epoch 4 took 0.0133640766144 seconds
+[INFO 2021-04-11 16:22:14,893 cleverhans] Epoch 5 took 0.0126810073853 seconds
+[INFO 2021-04-11 16:22:14,906 cleverhans] Epoch 6 took 0.0129699707031 seconds
+[INFO 2021-04-11 16:22:14,919 cleverhans] Epoch 7 took 0.0128059387207 seconds
+[INFO 2021-04-11 16:22:14,932 cleverhans] Epoch 8 took 0.0127198696136 seconds
+[INFO 2021-04-11 16:22:14,945 cleverhans] Epoch 9 took 0.0125598907471 seconds
+[INFO 2021-04-11 16:22:14,958 cleverhans] Epoch 10 took 0.0130939483643 seconds
+[INFO 2021-04-11 16:22:14,971 cleverhans] Epoch 11 took 0.0127050876617 seconds
+[INFO 2021-04-11 16:22:14,985 cleverhans] Epoch 12 took 0.0134880542755 seconds
+[INFO 2021-04-11 16:22:14,997 cleverhans] Epoch 13 took 0.0123748779297 seconds
+[INFO 2021-04-11 16:22:15,010 cleverhans] Epoch 14 took 0.012433052063 seconds
+[INFO 2021-04-11 16:22:15,023 cleverhans] Epoch 15 took 0.01282787323 seconds
+[INFO 2021-04-11 16:22:15,035 cleverhans] Epoch 16 took 0.0122191905975 seconds
+[INFO 2021-04-11 16:22:15,048 cleverhans] Epoch 17 took 0.0125670433044 seconds
+[INFO 2021-04-11 16:22:15,060 cleverhans] Epoch 18 took 0.0122110843658 seconds
+[INFO 2021-04-11 16:22:15,072 cleverhans] Epoch 19 took 0.0123329162598 seconds
+[INFO 2021-04-11 16:22:15,072 cleverhans] Completed model training.
+2021-04-11 16:22:15.200511: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:15.201102: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:15.201147: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:15.201715: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:15.201795: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.201840: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.201881: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.201922: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.201964: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.202012: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.202023: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:15.202028: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:15.202056: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:15.202062: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:15.202066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:15.202070: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:15,384 cleverhans] Epoch 0 took 0.0528900623322 seconds
+[INFO 2021-04-11 16:22:15,409 cleverhans] Epoch 1 took 0.0252411365509 seconds
+[INFO 2021-04-11 16:22:15,435 cleverhans] Epoch 2 took 0.0261578559875 seconds
+[INFO 2021-04-11 16:22:15,462 cleverhans] Epoch 3 took 0.0265030860901 seconds
+[INFO 2021-04-11 16:22:15,489 cleverhans] Epoch 4 took 0.0265688896179 seconds
+[INFO 2021-04-11 16:22:15,515 cleverhans] Epoch 5 took 0.0260858535767 seconds
+[INFO 2021-04-11 16:22:15,540 cleverhans] Epoch 6 took 0.0249857902527 seconds
+[INFO 2021-04-11 16:22:15,566 cleverhans] Epoch 7 took 0.0255899429321 seconds
+[INFO 2021-04-11 16:22:15,592 cleverhans] Epoch 8 took 0.0255131721497 seconds
+[INFO 2021-04-11 16:22:15,617 cleverhans] Epoch 9 took 0.0249798297882 seconds
+[INFO 2021-04-11 16:22:15,642 cleverhans] Epoch 10 took 0.0254979133606 seconds
+[INFO 2021-04-11 16:22:15,669 cleverhans] Epoch 11 took 0.0262129306793 seconds
+[INFO 2021-04-11 16:22:15,693 cleverhans] Epoch 12 took 0.0243139266968 seconds
+[INFO 2021-04-11 16:22:15,719 cleverhans] Epoch 13 took 0.0253210067749 seconds
+[INFO 2021-04-11 16:22:15,744 cleverhans] Epoch 14 took 0.0252199172974 seconds
+[INFO 2021-04-11 16:22:15,769 cleverhans] Epoch 15 took 0.0245997905731 seconds
+[INFO 2021-04-11 16:22:15,794 cleverhans] Epoch 16 took 0.025043964386 seconds
+[INFO 2021-04-11 16:22:15,819 cleverhans] Epoch 17 took 0.0248849391937 seconds
+[INFO 2021-04-11 16:22:15,844 cleverhans] Epoch 18 took 0.0243680477142 seconds
+[INFO 2021-04-11 16:22:15,869 cleverhans] Epoch 19 took 0.024836063385 seconds
+[INFO 2021-04-11 16:22:15,869 cleverhans] Completed model training.
+2021-04-11 16:22:15.878330: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:15.878940: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:22:15.878991: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:22:15.879547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:22:15.879634: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.879680: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.879723: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.879764: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.879805: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.879846: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:22:15.879856: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:22:15.879861: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:22:15.879896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:22:15.879902: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:22:15.879906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:22:15.879909: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:22:16,116 cleverhans] Epoch 0 took 0.0532479286194 seconds
+[INFO 2021-04-11 16:22:16,142 cleverhans] Epoch 1 took 0.0264210700989 seconds
+[INFO 2021-04-11 16:22:16,168 cleverhans] Epoch 2 took 0.025218963623 seconds
+[INFO 2021-04-11 16:22:16,193 cleverhans] Epoch 3 took 0.0248780250549 seconds
+[INFO 2021-04-11 16:22:16,219 cleverhans] Epoch 4 took 0.0257110595703 seconds
+[INFO 2021-04-11 16:22:16,245 cleverhans] Epoch 5 took 0.0255780220032 seconds
+[INFO 2021-04-11 16:22:16,270 cleverhans] Epoch 6 took 0.0250289440155 seconds
+[INFO 2021-04-11 16:22:16,295 cleverhans] Epoch 7 took 0.0246460437775 seconds
+[INFO 2021-04-11 16:22:16,320 cleverhans] Epoch 8 took 0.025297164917 seconds
+[INFO 2021-04-11 16:22:16,346 cleverhans] Epoch 9 took 0.025279045105 seconds
+[INFO 2021-04-11 16:22:16,371 cleverhans] Epoch 10 took 0.0256621837616 seconds
+[INFO 2021-04-11 16:22:16,397 cleverhans] Epoch 11 took 0.0252239704132 seconds
+[INFO 2021-04-11 16:22:16,423 cleverhans] Epoch 12 took 0.0256440639496 seconds
+[INFO 2021-04-11 16:22:16,448 cleverhans] Epoch 13 took 0.0250120162964 seconds
+[INFO 2021-04-11 16:22:16,473 cleverhans] Epoch 14 took 0.0246789455414 seconds
+[INFO 2021-04-11 16:22:16,498 cleverhans] Epoch 15 took 0.024717092514 seconds
+[INFO 2021-04-11 16:22:16,523 cleverhans] Epoch 16 took 0.0254471302032 seconds
+[INFO 2021-04-11 16:22:16,549 cleverhans] Epoch 17 took 0.0251731872559 seconds
+[INFO 2021-04-11 16:22:16,576 cleverhans] Epoch 18 took 0.0266849994659 seconds
+[INFO 2021-04-11 16:22:16,601 cleverhans] Epoch 19 took 0.0255789756775 seconds
+[INFO 2021-04-11 16:22:16,601 cleverhans] Completed model training.
+WARNING:tensorflow:From ./cleverhans/cleverhans/attacks/carlini_wagner_l2.py:84: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, there are two
+    options available in V2.
+    - tf.py_function takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    - tf.numpy_function maintains the semantics of the deprecated tf.py_func
+    (it is not differentiable, and manipulates numpy arrays). It drops the
+    stateful argument making all functions stateful.
+    
+/home/disk4T/fred/Aisecurity/robust_nn_icml/venv/lib/python2.7/site-packages/numpy/core/fromnumeric.py:3118: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/home/disk4T/fred/Aisecurity/robust_nn_icml/venv/lib/python2.7/site-packages/numpy/core/_methods.py:85: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+2021-04-11 16:23:50.501503: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:50.502648: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:23:50.502736: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:50.503837: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:23:50.503950: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.504000: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.504064: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.504128: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.504189: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.504249: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.504266: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:23:50.504274: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:23:50.504315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:23:50.504325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:23:50.504332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:23:50.504338: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:23:50,684 cleverhans] Epoch 0 took 0.039580821991 seconds
+[INFO 2021-04-11 16:23:50,688 cleverhans] Epoch 1 took 0.00364089012146 seconds
+[INFO 2021-04-11 16:23:50,692 cleverhans] Epoch 2 took 0.00358891487122 seconds
+[INFO 2021-04-11 16:23:50,696 cleverhans] Epoch 3 took 0.00376009941101 seconds
+[INFO 2021-04-11 16:23:50,699 cleverhans] Epoch 4 took 0.0034658908844 seconds
+[INFO 2021-04-11 16:23:50,703 cleverhans] Epoch 5 took 0.00349092483521 seconds
+[INFO 2021-04-11 16:23:50,707 cleverhans] Epoch 6 took 0.0035572052002 seconds
+[INFO 2021-04-11 16:23:50,710 cleverhans] Epoch 7 took 0.00346612930298 seconds
+[INFO 2021-04-11 16:23:50,714 cleverhans] Epoch 8 took 0.00343894958496 seconds
+[INFO 2021-04-11 16:23:50,717 cleverhans] Epoch 9 took 0.00334000587463 seconds
+[INFO 2021-04-11 16:23:50,720 cleverhans] Epoch 10 took 0.00330901145935 seconds
+[INFO 2021-04-11 16:23:50,724 cleverhans] Epoch 11 took 0.00321006774902 seconds
+[INFO 2021-04-11 16:23:50,727 cleverhans] Epoch 12 took 0.00321197509766 seconds
+[INFO 2021-04-11 16:23:50,731 cleverhans] Epoch 13 took 0.00354504585266 seconds
+[INFO 2021-04-11 16:23:50,734 cleverhans] Epoch 14 took 0.00325798988342 seconds
+[INFO 2021-04-11 16:23:50,737 cleverhans] Epoch 15 took 0.00316286087036 seconds
+[INFO 2021-04-11 16:23:50,741 cleverhans] Epoch 16 took 0.00334405899048 seconds
+[INFO 2021-04-11 16:23:50,744 cleverhans] Epoch 17 took 0.00330281257629 seconds
+[INFO 2021-04-11 16:23:50,747 cleverhans] Epoch 18 took 0.00325107574463 seconds
+[INFO 2021-04-11 16:23:50,750 cleverhans] Epoch 19 took 0.00300097465515 seconds
+[INFO 2021-04-11 16:23:50,750 cleverhans] Completed model training.
+2021-04-11 16:23:50.839270: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:50.840217: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:23:50.840263: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:50.841179: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:23:50.841254: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.841300: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.841350: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.841393: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.841435: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.841476: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:50.841487: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:23:50.841492: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:23:50.841521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:23:50.841526: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:23:50.841530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:23:50.841534: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:23:50,998 cleverhans] Epoch 0 took 0.0319349765778 seconds
+[INFO 2021-04-11 16:23:51,006 cleverhans] Epoch 1 took 0.00771903991699 seconds
+[INFO 2021-04-11 16:23:51,013 cleverhans] Epoch 2 took 0.00714206695557 seconds
+[INFO 2021-04-11 16:23:51,020 cleverhans] Epoch 3 took 0.00691795349121 seconds
+[INFO 2021-04-11 16:23:51,027 cleverhans] Epoch 4 took 0.00689601898193 seconds
+[INFO 2021-04-11 16:23:51,034 cleverhans] Epoch 5 took 0.00650191307068 seconds
+[INFO 2021-04-11 16:23:51,041 cleverhans] Epoch 6 took 0.0070641040802 seconds
+[INFO 2021-04-11 16:23:51,048 cleverhans] Epoch 7 took 0.00653195381165 seconds
+[INFO 2021-04-11 16:23:51,054 cleverhans] Epoch 8 took 0.00661611557007 seconds
+[INFO 2021-04-11 16:23:51,061 cleverhans] Epoch 9 took 0.00648903846741 seconds
+[INFO 2021-04-11 16:23:51,068 cleverhans] Epoch 10 took 0.00655913352966 seconds
+[INFO 2021-04-11 16:23:51,074 cleverhans] Epoch 11 took 0.00616097450256 seconds
+[INFO 2021-04-11 16:23:51,081 cleverhans] Epoch 12 took 0.00653100013733 seconds
+[INFO 2021-04-11 16:23:51,087 cleverhans] Epoch 13 took 0.0064389705658 seconds
+[INFO 2021-04-11 16:23:51,093 cleverhans] Epoch 14 took 0.00595307350159 seconds
+[INFO 2021-04-11 16:23:51,099 cleverhans] Epoch 15 took 0.00624299049377 seconds
+[INFO 2021-04-11 16:23:51,106 cleverhans] Epoch 16 took 0.00651979446411 seconds
+[INFO 2021-04-11 16:23:51,113 cleverhans] Epoch 17 took 0.00723886489868 seconds
+[INFO 2021-04-11 16:23:51,120 cleverhans] Epoch 18 took 0.00673890113831 seconds
+[INFO 2021-04-11 16:23:51,126 cleverhans] Epoch 19 took 0.0061469078064 seconds
+[INFO 2021-04-11 16:23:51,127 cleverhans] Completed model training.
+2021-04-11 16:23:51.223457: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:51.224432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:23:51.224478: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:51.225411: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:23:51.225493: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.225546: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.225593: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.225637: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.225679: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.225722: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.225733: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:23:51.225738: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:23:51.225773: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:23:51.225779: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:23:51.225783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:23:51.225786: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:23:51,392 cleverhans] Epoch 0 took 0.0391829013824 seconds
+[INFO 2021-04-11 16:23:51,407 cleverhans] Epoch 1 took 0.0144929885864 seconds
+[INFO 2021-04-11 16:23:51,420 cleverhans] Epoch 2 took 0.0134770870209 seconds
+[INFO 2021-04-11 16:23:51,433 cleverhans] Epoch 3 took 0.0130319595337 seconds
+[INFO 2021-04-11 16:23:51,446 cleverhans] Epoch 4 took 0.012130022049 seconds
+[INFO 2021-04-11 16:23:51,458 cleverhans] Epoch 5 took 0.0126271247864 seconds
+[INFO 2021-04-11 16:23:51,471 cleverhans] Epoch 6 took 0.012433052063 seconds
+[INFO 2021-04-11 16:23:51,484 cleverhans] Epoch 7 took 0.0126659870148 seconds
+[INFO 2021-04-11 16:23:51,497 cleverhans] Epoch 8 took 0.0130660533905 seconds
+[INFO 2021-04-11 16:23:51,510 cleverhans] Epoch 9 took 0.01322889328 seconds
+[INFO 2021-04-11 16:23:51,523 cleverhans] Epoch 10 took 0.0128660202026 seconds
+[INFO 2021-04-11 16:23:51,536 cleverhans] Epoch 11 took 0.0124628543854 seconds
+[INFO 2021-04-11 16:23:51,549 cleverhans] Epoch 12 took 0.0130038261414 seconds
+[INFO 2021-04-11 16:23:51,562 cleverhans] Epoch 13 took 0.0124180316925 seconds
+[INFO 2021-04-11 16:23:51,574 cleverhans] Epoch 14 took 0.0124988555908 seconds
+[INFO 2021-04-11 16:23:51,587 cleverhans] Epoch 15 took 0.012284040451 seconds
+[INFO 2021-04-11 16:23:51,599 cleverhans] Epoch 16 took 0.0123980045319 seconds
+[INFO 2021-04-11 16:23:51,612 cleverhans] Epoch 17 took 0.0127210617065 seconds
+[INFO 2021-04-11 16:23:51,625 cleverhans] Epoch 18 took 0.0126659870148 seconds
+[INFO 2021-04-11 16:23:51,637 cleverhans] Epoch 19 took 0.0123729705811 seconds
+[INFO 2021-04-11 16:23:51,637 cleverhans] Completed model training.
+2021-04-11 16:23:51.646421: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:51.647397: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:23:51.647449: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:51.648267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:23:51.648354: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.648402: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.648447: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.648494: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.648546: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.648590: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:51.648603: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:23:51.648608: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:23:51.648637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:23:51.648643: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:23:51.648647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:23:51.648650: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:23:51,816 cleverhans] Epoch 0 took 0.0394349098206 seconds
+[INFO 2021-04-11 16:23:51,830 cleverhans] Epoch 1 took 0.013571023941 seconds
+[INFO 2021-04-11 16:23:51,843 cleverhans] Epoch 2 took 0.0137338638306 seconds
+[INFO 2021-04-11 16:23:51,857 cleverhans] Epoch 3 took 0.0130507946014 seconds
+[INFO 2021-04-11 16:23:51,869 cleverhans] Epoch 4 took 0.0127639770508 seconds
+[INFO 2021-04-11 16:23:51,882 cleverhans] Epoch 5 took 0.0126478672028 seconds
+[INFO 2021-04-11 16:23:51,895 cleverhans] Epoch 6 took 0.0130069255829 seconds
+[INFO 2021-04-11 16:23:51,909 cleverhans] Epoch 7 took 0.0133509635925 seconds
+[INFO 2021-04-11 16:23:51,922 cleverhans] Epoch 8 took 0.0130138397217 seconds
+[INFO 2021-04-11 16:23:51,935 cleverhans] Epoch 9 took 0.0130128860474 seconds
+[INFO 2021-04-11 16:23:51,948 cleverhans] Epoch 10 took 0.0130989551544 seconds
+[INFO 2021-04-11 16:23:51,961 cleverhans] Epoch 11 took 0.0122621059418 seconds
+[INFO 2021-04-11 16:23:51,974 cleverhans] Epoch 12 took 0.0128059387207 seconds
+[INFO 2021-04-11 16:23:51,986 cleverhans] Epoch 13 took 0.0125370025635 seconds
+[INFO 2021-04-11 16:23:51,999 cleverhans] Epoch 14 took 0.0127770900726 seconds
+[INFO 2021-04-11 16:23:52,011 cleverhans] Epoch 15 took 0.0120670795441 seconds
+[INFO 2021-04-11 16:23:52,024 cleverhans] Epoch 16 took 0.0125999450684 seconds
+[INFO 2021-04-11 16:23:52,037 cleverhans] Epoch 17 took 0.0123040676117 seconds
+[INFO 2021-04-11 16:23:52,049 cleverhans] Epoch 18 took 0.0124530792236 seconds
+[INFO 2021-04-11 16:23:52,061 cleverhans] Epoch 19 took 0.0120210647583 seconds
+[INFO 2021-04-11 16:23:52,061 cleverhans] Completed model training.
+2021-04-11 16:23:52.072506: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:52.073530: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:23:52.073590: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:23:52.074522: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:23:52.074619: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:52.074668: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:52.074712: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:52.074754: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:52.074797: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:52.074840: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:23:52.074852: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:23:52.074857: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:23:52.074887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:23:52.074894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:23:52.074898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:23:52.074901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:23:52,243 cleverhans] Epoch 0 took 0.0397629737854 seconds
+[INFO 2021-04-11 16:23:52,258 cleverhans] Epoch 1 took 0.0142750740051 seconds
+[INFO 2021-04-11 16:23:52,271 cleverhans] Epoch 2 took 0.0136981010437 seconds
+[INFO 2021-04-11 16:23:52,284 cleverhans] Epoch 3 took 0.0124740600586 seconds
+[INFO 2021-04-11 16:23:52,297 cleverhans] Epoch 4 took 0.0124700069427 seconds
+[INFO 2021-04-11 16:23:52,309 cleverhans] Epoch 5 took 0.0119650363922 seconds
+[INFO 2021-04-11 16:23:52,321 cleverhans] Epoch 6 took 0.012335062027 seconds
+[INFO 2021-04-11 16:23:52,334 cleverhans] Epoch 7 took 0.012512922287 seconds
+[INFO 2021-04-11 16:23:52,347 cleverhans] Epoch 8 took 0.0128149986267 seconds
+[INFO 2021-04-11 16:23:52,360 cleverhans] Epoch 9 took 0.0128350257874 seconds
+[INFO 2021-04-11 16:23:52,372 cleverhans] Epoch 10 took 0.0124850273132 seconds
+[INFO 2021-04-11 16:23:52,385 cleverhans] Epoch 11 took 0.0124428272247 seconds
+[INFO 2021-04-11 16:23:52,398 cleverhans] Epoch 12 took 0.0130858421326 seconds
+[INFO 2021-04-11 16:23:52,411 cleverhans] Epoch 13 took 0.0127129554749 seconds
+[INFO 2021-04-11 16:23:52,424 cleverhans] Epoch 14 took 0.0129628181458 seconds
+[INFO 2021-04-11 16:23:52,437 cleverhans] Epoch 15 took 0.0126008987427 seconds
+[INFO 2021-04-11 16:23:52,449 cleverhans] Epoch 16 took 0.0126190185547 seconds
+[INFO 2021-04-11 16:23:52,462 cleverhans] Epoch 17 took 0.0129389762878 seconds
+[INFO 2021-04-11 16:23:52,475 cleverhans] Epoch 18 took 0.0124568939209 seconds
+[INFO 2021-04-11 16:23:52,487 cleverhans] Epoch 19 took 0.0122728347778 seconds
+[INFO 2021-04-11 16:23:52,487 cleverhans] Completed model training.
+2021-04-11 16:43:02.974793: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:43:02.975763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:01:00.0
+2021-04-11 16:43:02.975811: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:1006] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-11 16:43:02.976735: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.607
+pciBusID: 0000:02:00.0
+2021-04-11 16:43:02.976814: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:43:02.976862: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:43:02.976906: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:43:02.976949: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:43:02.976991: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:43:02.977032: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/opt/RISCV/riscv/lib
+2021-04-11 16:43:02.977044: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2021-04-11 16:43:02.977049: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-04-11 16:43:02.977078: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-11 16:43:02.977084: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2021-04-11 16:43:02.977089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N Y 
+2021-04-11 16:43:02.977093: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   Y N 
+[INFO 2021-04-11 16:43:03,140 cleverhans] Epoch 0 took 0.0388650894165 seconds
+[INFO 2021-04-11 16:43:03,153 cleverhans] Epoch 1 took 0.0133759975433 seconds
+[INFO 2021-04-11 16:43:03,166 cleverhans] Epoch 2 took 0.0125749111176 seconds
+[INFO 2021-04-11 16:43:03,178 cleverhans] Epoch 3 took 0.0117709636688 seconds
+[INFO 2021-04-11 16:43:03,189 cleverhans] Epoch 4 took 0.0114619731903 seconds
+[INFO 2021-04-11 16:43:03,201 cleverhans] Epoch 5 took 0.0114140510559 seconds
+[INFO 2021-04-11 16:43:03,212 cleverhans] Epoch 6 took 0.0113470554352 seconds
+[INFO 2021-04-11 16:43:03,224 cleverhans] Epoch 7 took 0.0114631652832 seconds
+[INFO 2021-04-11 16:43:03,235 cleverhans] Epoch 8 took 0.011255979538 seconds
+[INFO 2021-04-11 16:43:03,247 cleverhans] Epoch 9 took 0.0113399028778 seconds
+[INFO 2021-04-11 16:43:03,258 cleverhans] Epoch 10 took 0.0115070343018 seconds
+[INFO 2021-04-11 16:43:03,270 cleverhans] Epoch 11 took 0.0111749172211 seconds
+[INFO 2021-04-11 16:43:03,282 cleverhans] Epoch 12 took 0.0119860172272 seconds
+[INFO 2021-04-11 16:43:03,293 cleverhans] Epoch 13 took 0.011538028717 seconds
+[INFO 2021-04-11 16:43:03,305 cleverhans] Epoch 14 took 0.0113658905029 seconds
+[INFO 2021-04-11 16:43:03,316 cleverhans] Epoch 15 took 0.0111691951752 seconds
+[INFO 2021-04-11 16:43:03,328 cleverhans] Epoch 16 took 0.0116651058197 seconds
+[INFO 2021-04-11 16:43:03,340 cleverhans] Epoch 17 took 0.0115389823914 seconds
+[INFO 2021-04-11 16:43:03,351 cleverhans] Epoch 18 took 0.0114140510559 seconds
+[INFO 2021-04-11 16:43:03,363 cleverhans] Epoch 19 took 0.0117337703705 seconds
+[INFO 2021-04-11 16:43:03,363 cleverhans] Completed model training.
+Makefile:33: recipe for target 'abalone_cw' failed
+make: *** [abalone_cw] Terminated

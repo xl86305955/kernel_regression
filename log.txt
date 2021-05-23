@@ -1,0 +1,25 @@
+python run_experiment.py mnist nn FGSM
+2021-05-14 14:05:11.988352: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory
+2021-05-14 14:05:11.988410: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory
+2021-05-14 14:05:11.988417: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+WARNING:tensorflow:From /home/fred/anaconda3/envs/venv/lib/python2.7/site-packages/tensorflow_core/python/compat/v2_compat.py:88: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2021-05-14 14:05:12.290538: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+now processing Experiment 0
+Traceback (most recent call last):
+  File "run_experiment.py", line 569, in <module>
+    Xsub_train, Xsub_test, Ysub_train, Ysub_test] = mnist_1v7_data(n,m)
+  File "/home/disk6T/fred/AiSecurity/non-parametric/115/classifier/krr/prepare_data.py", line 17, in mnist_1v7_data
+    (x_train, y_train), (x_test, y_test) = mnist.load_data()
+  File "/home/fred/anaconda3/envs/venv/lib/python2.7/site-packages/tensorflow_core/python/keras/datasets/mnist.py", line 50, in load_data
+    '731c5ac602752760c8e48fbffcf8c3b850d9dc2a2aedcf2cc48468fc17b673d1')
+  File "/home/fred/anaconda3/envs/venv/lib/python2.7/site-packages/tensorflow_core/python/keras/utils/data_utils.py", line 236, in get_file
+    if not validate_file(fpath, file_hash, algorithm=hash_algorithm):
+  File "/home/fred/anaconda3/envs/venv/lib/python2.7/site-packages/tensorflow_core/python/keras/utils/data_utils.py", line 348, in validate_file
+    if str(_hash_file(fpath, hasher, chunk_size)) == str(file_hash):
+  File "/home/fred/anaconda3/envs/venv/lib/python2.7/site-packages/tensorflow_core/python/keras/utils/data_utils.py", line 324, in _hash_file
+    hasher.update(chunk)
+KeyboardInterrupt
+Makefile:53: recipe for target 'mnist' failed
+make: *** [mnist] Error 1
